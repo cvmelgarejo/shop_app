@@ -1,8 +1,27 @@
-import 'package:flutter/material.dart';
-import 'presentation/shops/views/products_overview_view.dart';
-import 'core/router/router.dart' as router;
+import 'dart:async';
 
-void main() => runApp(MyApp());
+import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:shop_app/core/dependency_injection/locator.dart';
+import 'core/router/router.dart' as router;
+import 'package:stacked_services/stacked_services.dart' as services;
+
+void main() async {
+  runZonedGuarded(
+    () async {
+      setupLocator();
+      final container = ProviderContainer();
+      runApp(UncontrolledProviderScope(
+        container: container,
+        child: MyApp(),
+      ));
+    },
+    (error, stackTrace) {
+      print(error);
+      print(stackTrace);
+    },
+  );
+}
 
 class MyApp extends StatelessWidget {
   final ThemeData theme = ThemeData(
@@ -12,12 +31,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'MyShop',
-      theme: theme.copyWith(
-          colorScheme:
-              theme.colorScheme.copyWith(secondary: Colors.deepOrange)),
-      home: ProductsOverviewView(),
-      initialRoute: router.Router.productsOverviewView,
-    );
+        title: 'My Shop',
+        theme: theme.copyWith(
+            colorScheme:
+                theme.colorScheme.copyWith(secondary: Colors.deepOrange)),
+        navigatorKey: services.StackedService.navigatorKey,
+        initialRoute: router.Router.productsOverviewView,
+        onGenerateRoute: router.Router.generateRoute);
   }
 }
