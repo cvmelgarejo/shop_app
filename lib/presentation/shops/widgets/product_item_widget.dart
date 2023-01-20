@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/domain/models/product.dart';
 
 class ProductItemWidget extends StatelessWidget {
-  final String id;
-  final String title;
-  final String imageUrl;
+  final Product product;
+  final Function(Product productId) onProductSelected;
 
-  ProductItemWidget(this.id, this.title, this.imageUrl);
+  ProductItemWidget(this.product, this.onProductSelected);
 
   @override
   Widget build(BuildContext context) {
@@ -13,14 +13,9 @@ class ProductItemWidget extends StatelessWidget {
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
         child: GestureDetector(
-          onTap: () => {
-            Navigator.of(context).pushNamed(
-              '/product-details',
-              arguments: id,
-            ),
-          },
+          onTap: (() => onProductSelected(product)),
           child: Image.network(
-            imageUrl,
+            product.imageUrl,
             fit: BoxFit.cover,
           ),
         ),
@@ -31,7 +26,7 @@ class ProductItemWidget extends StatelessWidget {
               onPressed: () {},
               color: Theme.of(context).colorScheme.secondary),
           title: Text(
-            title,
+            product.name,
             textAlign: TextAlign.center,
           ),
           trailing: IconButton(
