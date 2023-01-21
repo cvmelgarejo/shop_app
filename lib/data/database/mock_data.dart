@@ -14,8 +14,7 @@ final List<Product> loadedProducts = [
     name: 'Trousers',
     description: 'A nice pair of trousers.',
     price: 59.99,
-    imageUrl:
-        'https://cdn.pixabay.com/photo/2016/11/29/05/45/adult-1867284_1280.jpg',
+    imageUrl: 'https://m.media-amazon.com/images/I/71WCBA-yHvL._UL1500_.jpg',
   ),
   Product(
     productId: 'p3',
@@ -29,7 +28,6 @@ final List<Product> loadedProducts = [
     name: 'A Pan',
     description: 'Prepare any meal you want.',
     price: 49.99,
-    imageUrl:
-        'https://cdn.pixabay.com/photo/2016/11/18/17/46/pan-1835926_1280.jpg',
+    imageUrl: 'https://m.media-amazon.com/images/I/71nd7YSIRGL.jpg',
   ),
 ];

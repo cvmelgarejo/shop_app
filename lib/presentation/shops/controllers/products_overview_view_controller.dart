@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/foundation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shop_app/core/dependency_injection/locator.dart';
@@ -23,9 +25,10 @@ class ProducstOverviewViewController extends ChangeNotifier {
     notifyListeners();
   }
 
-  void goToProductDetails({required Product? product}) {
+  void goToProductDetails({Product? product}) {
     _navigationService.navigateTo('/product_details', arguments: {
       'product': product,
+      'pitoco':'pitoco'
     });
   }
 

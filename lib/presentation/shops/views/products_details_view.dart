@@ -5,12 +5,11 @@ class ProductDetailsView extends StatelessWidget {
   final Product? product;
 
   const ProductDetailsView({required this.product});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(product!.name),
+        title: Text(product != null ? product!.name : "No llego el nombre"),
       ),
     );
   }
