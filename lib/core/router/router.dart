@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:shop_app/domain/models/product.dart';
 import 'package:shop_app/presentation/shops/views/products_details_view.dart';

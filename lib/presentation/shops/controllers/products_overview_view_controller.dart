@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/foundation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shop_app/core/dependency_injection/locator.dart';
@@ -14,6 +12,9 @@ class ProducstOverviewViewController extends ChangeNotifier {
   List<Product> _products = [];
   List<Product> get products => _products;
 
+  bool _isFavorite = false;
+  bool get isFavorite => _isFavorite;
+
   ProducstOverviewViewController({
     required ProductRepository productRepository,
     required NavigationService navigationService,
@@ -25,10 +26,14 @@ class ProducstOverviewViewController extends ChangeNotifier {
     notifyListeners();
   }
 
+  void toggleFavoriteStatus(String productId) {
+    _isFavorite = _productRepository.toggleFavoriteStatus(productId);
+    notifyListeners();
+  }
+
   void goToProductDetails({Product? product}) {
     _navigationService.navigateTo('/product_details', arguments: {
       'product': product,
-      'pitoco':'pitoco'
     });
   }
 

@@ -17,4 +17,20 @@ class ProductRepositoryImplementation implements ProductRepository {
     final allProducts = loadedProducts;
     return allProducts;
   }
+
+  @override
+  bool toggleFavoriteStatus(String productId) {
+    final product =
+        loadedProducts.where((product) => product.productId == productId).first;
+    loadedProducts
+            .where((product) => product.productId == productId)
+            .first
+            .isFavorite =
+        !loadedProducts
+            .where((product) => product.productId == productId)
+            .first
+            .isFavorite;
+
+    return product.isFavorite;
+  }
 }

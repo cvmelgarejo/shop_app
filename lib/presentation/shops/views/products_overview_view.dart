@@ -18,6 +18,8 @@ class _ProductsOverviewViewState extends ConsumerState<ProductsOverviewView> {
     final productsOverviewViewController = ref.read(productsOverviewProvider);
     final loadedProducts =
         ref.watch(productsOverviewProvider.select((value) => value.products));
+    final isfavorite =
+        ref.watch(productsOverviewProvider.select((value) => value.isFavorite));
 
     bool isLoading = false;
     useEffect(() {
@@ -49,6 +51,8 @@ class _ProductsOverviewViewState extends ConsumerState<ProductsOverviewView> {
                 productsOverviewViewController.goToProductDetails(
                     product: product)
               }),
+          (productId) =>
+              productsOverviewViewController.toggleFavoriteStatus(productId),
         ),
       ),
     );
