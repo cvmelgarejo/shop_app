@@ -34,7 +34,7 @@ class _ProductsOverviewViewState extends ConsumerState<ProductsOverviewView> {
     }, []);
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Shop'),
+        title: Text('Amazon quien sos'),
       ),
       body: GridView.builder(
         padding: const EdgeInsets.all(10.0),

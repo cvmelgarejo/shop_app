@@ -9,7 +9,7 @@ class ProductDetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(product != null ? product!.name : "No llego el nombre"),
+        title: Text(product!.name),
       ),
     );
   }
